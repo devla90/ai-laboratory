@@ -52,9 +52,29 @@ layout: interactive
 
 # ¿Qué IAs conocen?
 
+<v-click>
+<div class="flex flex-wrap justify-center gap-5 mt-8">
+  <div class="flex flex-col items-center gap-2">
+    <img src="/images/chatgpt.svg" style="width: 56px; height: 56px; border-radius: 14px" alt="ChatGPT" />
+    <span class="text-xs font-semibold" style="color: #2D3748">ChatGPT</span>
+  </div>
+  <div class="flex flex-col items-center gap-2">
+    <img src="/images/claude.png" style="width: 56px; height: 56px; border-radius: 14px" alt="Claude" />
+    <span class="text-xs font-semibold" style="color: #2D3748">Claude</span>
+  </div>
+  <div class="flex flex-col items-center gap-2">
+    <img src="/images/gemini.svg" style="width: 56px; height: 56px; border-radius: 14px" alt="Gemini" />
+    <span class="text-xs font-semibold" style="color: #2D3748">Gemini</span>
+  </div>
+  <div class="flex flex-col items-center gap-2">
+    <img src="/images/copilot.png" style="width: 56px; height: 56px; border-radius: 14px" alt="Copilot" />
+    <span class="text-xs font-semibold" style="color: #2D3748">Copilot</span>
+  </div>
+</div>
+</v-click>
+
 <!--
-Ir anotando mentalmente las que mencionen.
-Comunes: ChatGPT, Claude, Gemini, Copilot, Midjourney, DALL-E, Siri, Alexa.
+Primero dejar que el equipo responda. Luego hacer click para mostrar los logos.
 Cierre: "Fíjense cuántas hay. Y todas tienen algo en común: aprenden de datos."
 Timing: 3 min
 -->
@@ -601,16 +621,21 @@ layout: section
 </div>
 
 <v-click>
-<div class="mt-8 text-sm opacity-70">
+<div class="mt-6 text-sm opacity-70">
   <strong>Próximo Lab:</strong> Contexto, Compactación y el Lenguaje de la IA
+</div>
+</v-click>
+
+<v-click>
+<div class="mt-4 text-sm opacity-60">
+  📺 Video recomendado: <a href="https://www.youtube.com/watch?v=f4Z4cy3Rc9U" target="_blank" style="color: white; border-bottom: 1px solid rgba(255,255,255,0.4)">¿El contexto es importante? — YouTube</a>
 </div>
 </v-click>
 
 <!--
 Resumen rápido de los 4 puntos clave.
-Preview del siguiente lab: "¿Cómo hace la IA para 'recordar' lo que le dijiste?
-¿Cuánta información puede manejar? ¿Qué pasa cuando llega al límite?"
-Preguntar si hay dudas antes de pasar a la parte abierta.
+Compartir el link del video para que lo vean después.
+Preview del siguiente lab: "¿Cómo hace la IA para 'recordar' lo que le dijiste?"
 Timing: 2 min
 -->
 
