@@ -20,7 +20,7 @@ disable-model-invocation: false
 |--------|-----|-----|
 | Main | `#EC0000` | Títulos, acentos, bordes activos |
 | Main Strong | `#C00000` | Hover, gradients, énfasis fuerte |
-| Light | `#F7FAFC` | Fondo de slides de contenido |
+| Light | `#FFFFFF` | Fondo de slides de contenido (blanco puro) |
 | Dark | `#CC0000` | Textos sobre fondo claro cuando necesitan énfasis |
 | Contrast Text | `#FFFFFF` | Texto sobre fondos rojos u oscuros |
 
@@ -28,21 +28,34 @@ disable-model-invocation: false
 
 | Nombre | Valor | Uso |
 |--------|-------|-----|
-| Glow | `rgba(236, 0, 0, 0.3)` | Sombras y efectos de brillo |
-| Grid | `rgba(236, 0, 0, 0.08)` | Patrón grid de fondo |
-| Surface | `rgba(255, 255, 255, 0.95)` | Tarjetas y superficies |
-| Dark BG | `#1a1a2e` | Fondo de covers y secciones oscuras |
+| Dark BG | `#1a1a2e` | Fondo de covers, cajas de contenido con texto blanco |
 | Dark Surface | `#16213e` | Superficies sobre fondo oscuro |
-| Text Primary | `#2D3748` | Texto principal en fondos claros |
+| Neutral Dark | `#2D3748` | Cajas intermedias en pipelines, texto principal en fondos claros |
 | Text Secondary | `#718096` | Texto secundario |
+| Border | `rgba(236, 0, 0, 0.12)` | Bordes sutiles y separadores |
+| Blue Accent | `#6495ED` | Diferenciador para idioma inglés en comparativas de tokens |
 
 ## Reglas de Contraste
-- Texto blanco (#FFF) SOLO sobre fondos rojos o dark-bg
-- Texto oscuro (#2D3748) sobre fondos claros (#F7FAFC)
-- Nunca usar rojo (#EC0000) como color de texto sobre fondo blanco en cuerpo (solo títulos)
-- Los bullets siempre en #2D3748 sobre fondo claro
+
+### Obligatorio
+- Cajas/tarjetas con texto: SIEMPRE fondo oscuro + texto blanco
+- Fondos permitidos para cajas: `#1a1a2e`, `#2D3748`, `#C00000`, `#EC0000`
+- NUNCA usar fondo claro transparente (rgba rojo <20%) con texto rojo — ilegible
+- Bordes decorativos: siempre `1px solid rgba(236, 0, 0, 0.12)`
+
+### Texto
+- Texto blanco (#FFF) SOLO sobre fondos oscuros o rojos
+- Texto oscuro (#2D3748) sobre fondo blanco
+- Rojo (#EC0000) solo para títulos h1 (tienen contenedor CSS automático)
+- Bullets: color del texto base (#2D3748)
+
+### Fondos
+- Slides de contenido: blanco puro #FFFFFF — sin grids, sin patrones
+- Cover: gradient oscuro `#1a1a2e → #16213e`
+- Section/cierre: gradient rojo `#EC0000 → #C00000`
+- Analogía visual: #FAFAFA con borde sutil
 
 ## Gradients
 - Header bar: `linear-gradient(90deg, #EC0000, #C00000)`
 - Cover BG: `linear-gradient(135deg, #1a1a2e, #16213e)`
-- Glow effect: `radial-gradient(circle, rgba(236,0,0,0.15), transparent)`
+- Título h1: `linear-gradient(90deg, rgba(236,0,0,0.04), transparent 60%)` — automático via CSS

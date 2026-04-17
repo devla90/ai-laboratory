@@ -5,9 +5,6 @@
     <div class="cover-content">
       <slot />
     </div>
-    <div class="lab-indicator" v-if="$attrs.labNumber">
-      Lab {{ $attrs.labNumber }}
-    </div>
   </div>
 </template>
 
@@ -25,17 +22,6 @@
   overflow: hidden;
 }
 
-.layout-cover::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(236, 0, 0, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(236, 0, 0, 0.06) 1px, transparent 1px);
-  background-size: 30px 30px;
-  pointer-events: none;
-}
-
 .layout-cover::before {
   content: '';
   position: absolute;
@@ -44,7 +30,7 @@
   width: 500px;
   height: 500px;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(236, 0, 0, 0.15), transparent 70%);
+  background: radial-gradient(circle, rgba(236, 0, 0, 0.1), transparent 70%);
   pointer-events: none;
 }
 
@@ -56,7 +42,7 @@
 
 .cover-content h1 {
   color: #FFFFFF !important;
-  text-shadow: 0 0 40px rgba(236, 0, 0, 0.5) !important;
+  text-shadow: 0 0 40px rgba(236, 0, 0, 0.4) !important;
   font-size: 2.8em !important;
   margin-bottom: 0.2em;
 }
@@ -74,9 +60,9 @@
 
 .corner-decoration {
   position: absolute;
-  width: 60px;
-  height: 60px;
-  border: 2px solid rgba(236, 0, 0, 0.3);
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(236, 0, 0, 0.25);
   z-index: 1;
 }
 
@@ -92,17 +78,5 @@
   right: 24px;
   border-left: none;
   border-top: none;
-}
-
-.lab-indicator {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.85em;
-  color: rgba(236, 0, 0, 0.6);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  z-index: 1;
 }
 </style>

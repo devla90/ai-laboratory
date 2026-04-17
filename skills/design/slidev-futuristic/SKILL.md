@@ -2,7 +2,7 @@
 name: slidev-futuristic
 description: >
   Configuración completa del tema futurista Slidev para AI Laboratory.
-  Incluye frontmatter, sintaxis de slides, layouts y CSS imports.
+  Incluye frontmatter, sintaxis de slides, layouts, CSS imports y reglas de diseño.
 user-invocable: true
 disable-model-invocation: false
 ---
@@ -18,7 +18,7 @@ disable-model-invocation: false
 
 ```yaml
 ---
-theme: ./theme
+theme: ../../theme
 title: 'AI Laboratory - Lab NN: Título'
 info: 'Laboratorio de Inteligencia Artificial'
 author: 'AI Laboratory Team'
@@ -29,6 +29,31 @@ fonts:
   mono: Fira Code
 ---
 ```
+
+## Reglas de Diseño Visual
+
+### Fondo y Espaciado
+- Fondo blanco puro (#FFFFFF) en slides de contenido
+- Padding global: `2.5em 3.5em` — el CSS base ya lo aplica, NO agregar padding extra inline
+- Nunca usar fondos con patrones grid ni líneas
+
+### Títulos (h1)
+- Tienen contenedor automático via CSS: borde izquierdo rojo 4px + fondo degradado sutil
+- Tamaño: 1.85em (~30px) via CSS base
+- NO agregar estilos inline a h1 en slides normales — el CSS se encarga
+- Los layouts cover/interactive/section resetean este estilo automáticamente
+
+### Contraste Obligatorio
+- Cajas con texto: SIEMPRE fondo oscuro (#1a1a2e, #2D3748, #C00000, #EC0000) + texto blanco
+- NUNCA usar fondo claro (rgba rojo <20%) con texto rojo — mal contraste
+- Bordes limpios: 1px solid rgba(236, 0, 0, 0.12)
+- Si necesitas diferenciar cajas en un pipeline, alternar entre #2D3748 y #C00000
+
+### Animaciones v-click
+- Slides de contenido: cada bloque principal con `<v-click>`
+- Listas: usar `<v-clicks>` para que cada item aparezca con click
+- Slides interactivas: SIN v-click (solo la pregunta visible)
+- Slide de cierre/section: cada punto con v-click
 
 ## Sintaxis de Slides
 
@@ -44,14 +69,13 @@ layout: cover
 ```
 
 ### Layouts Disponibles
-- `cover` → Portada con fondo oscuro
-- `interactive` → Pregunta centrada con borde glow
-- `comparison` → Columnas para comparar
-- `analogy` → Split visual/texto
-- `section` → Divisor de sección
-- `default` → Contenido estándar
+- `cover` → Portada con fondo oscuro, esquinas decorativas
+- `interactive` → Pregunta centrada, borde sutil, hint "Pregunta abierta al equipo"
+- `comparison` → Header + body para comparativas
+- `analogy` → Split: `::visual::` izquierda + `::default::` derecha
+- `section` → Fondo gradient rojo, para cierres/resúmenes
+- `default` → Contenido estándar con padding y título contenedor
 - `two-cols` → Dos columnas (built-in Slidev)
-- `image-right` → Imagen a la derecha (built-in Slidev)
 
 ### Notas del Presentador
 ```markdown
@@ -62,68 +86,48 @@ Transición: "Ahora veamos..."
 -->
 ```
 
-### Estilos Inline
-```markdown
-<style>
-h1 { color: #EC0000; }
-</style>
-```
-
 ### Imágenes
 ```markdown
 ![alt](/images/nombre.png)
 ```
 Las imágenes van en `presentations/lab-NN/public/images/`
 
-## Estructura de un Slide File Completo
+## Ejemplo de Slide con Buen Contraste
 
 ```markdown
----
-theme: ./theme
-title: 'AI Laboratory - Lab 01'
-transition: slide-left
-mdc: true
-fonts:
-  sans: Inter
-  mono: Fira Code
----
+# De Datos a Respuesta
 
----
-layout: cover
----
+<div class="flex items-center justify-center mt-6">
+<div class="flex items-center gap-3">
 
-# AI Laboratory
-## Lab 01: Introducción a la IA
+<v-click>
+<div class="p-4 rounded-lg text-center text-sm" style="background: #1a1a2e; color: white; min-width: 100px">
+  📝<br><strong>Tu prompt</strong>
+</div>
+</v-click>
 
-<!--
-Bienvenida. Presentarte. Explicar dinámica del lab.
-Timing: 1 min
--->
+<v-click>
+<div style="color: #EC0000; font-size: 1.5em">→</div>
+<div class="p-4 rounded-lg text-center text-sm" style="background: #2D3748; color: white; min-width: 100px">
+  ✂️<br><strong>Paso 2</strong>
+</div>
+</v-click>
 
----
-layout: interactive
----
+<v-click>
+<div style="color: #EC0000; font-size: 1.5em">→</div>
+<div class="p-4 rounded-lg text-center text-sm" style="background: #EC0000; color: white; min-width: 100px">
+  💬<br><strong>Resultado</strong>
+</div>
+</v-click>
 
-# ¿Todos conocemos qué es IA?
-
-<!--
-Pregunta abierta. Dar 30 segundos para que piensen.
-Si nadie responde: "¿Alguien ha usado Siri o Alexa?"
-Timing: 3 min
--->
-
----
-
-# Introducción a la IA
-
-- La IA es software que aprende patrones de datos
-- No "piensa" como un humano
-- Tipos: IA estrecha, IA general, superinteligencia
-- Hoy usamos IA estrecha (tareas específicas)
-- Ejemplos: traducción, reconocimiento de voz, código
-
-<!--
-Enfatizar que la IA actual es "estrecha" - muy buena en tareas específicas.
-Timing: 2.5 min
--->
+</div>
+</div>
 ```
+
+## Ejemplo de Tokenización ES vs EN
+
+Cuando muestres tokenización, siempre comparar español vs inglés para mostrar diferencia:
+- Español: tokens con fondo `rgba(236,0,0,0.4)` y `rgba(236,0,0,0.25)` alternados
+- Inglés: tokens con fondo `rgba(100,149,237,0.4)` y `rgba(100,149,237,0.25)` alternados
+- Ambos sobre fondo oscuro #1a1a2e con texto blanco
+- Mostrar conteo: "→ N tokens · M palabras" con color del idioma

@@ -17,15 +17,16 @@
   height: 100%;
   padding: 2em 2.5em;
   align-items: center;
-  background-color: #F7FAFC;
+  background-color: #FFFFFF;
 }
 
 .analogy-visual {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, rgba(236, 0, 0, 0.05), rgba(236, 0, 0, 0.02));
-  border-radius: 16px;
+  background: #FAFAFA;
+  border: 1px solid rgba(236, 0, 0, 0.12);
+  border-radius: 12px;
   padding: 2em;
   min-height: 280px;
 }
@@ -33,11 +34,7 @@
 .analogy-visual img {
   max-width: 100%;
   max-height: 280px;
-  border-radius: 12px;
-}
-
-.analogy-visual .emoji-large {
-  font-size: 6em;
+  border-radius: 8px;
 }
 
 .analogy-text h2 {

@@ -18,34 +18,22 @@
   height: 100%;
   padding: 3em;
   position: relative;
-  background-color: #F7FAFC;
+  background-color: #FFFFFF;
 }
 
 .layout-interactive::after {
   content: '';
   position: absolute;
-  inset: 30px;
-  border: 2px solid rgba(236, 0, 0, 0.15);
-  border-radius: 20px;
-  animation: pulse-border 3s ease-in-out infinite;
+  inset: 40px;
+  border: 1px solid rgba(236, 0, 0, 0.12);
+  border-radius: 16px;
   pointer-events: none;
-}
-
-@keyframes pulse-border {
-  0%, 100% {
-    border-color: rgba(236, 0, 0, 0.15);
-    box-shadow: 0 0 0 0 rgba(236, 0, 0, 0);
-  }
-  50% {
-    border-color: rgba(236, 0, 0, 0.4);
-    box-shadow: 0 0 25px rgba(236, 0, 0, 0.1);
-  }
 }
 
 .interactive-icon {
   font-size: 2.5em;
   margin-bottom: 0.3em;
-  opacity: 0.4;
+  opacity: 0.35;
 }
 
 .interactive-content {
@@ -63,9 +51,9 @@
 .interactive-hint {
   position: absolute;
   bottom: 40px;
-  font-size: 0.8em;
+  font-size: 0.75em;
   color: #718096;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 </style>

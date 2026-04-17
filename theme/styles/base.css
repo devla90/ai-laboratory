@@ -1,73 +1,59 @@
 :root {
   --color-main: #EC0000;
   --color-main-strong: #C00000;
-  --color-light: #F7FAFC;
+  --color-light: #FDF6F6;
   --color-dark: #CC0000;
   --color-contrast-text: #FFFFFF;
-  --color-glow: rgba(236, 0, 0, 0.3);
-  --color-grid: rgba(236, 0, 0, 0.08);
-  --color-surface: rgba(255, 255, 255, 0.95);
   --color-dark-bg: #1a1a2e;
   --color-dark-surface: #16213e;
   --color-text-primary: #2D3748;
   --color-text-secondary: #718096;
+  --color-border: rgba(236, 0, 0, 0.12);
 }
 
-/* Global base */
+/* Global base - padding for all content slides */
 .slidev-layout {
   background-color: var(--color-light);
   color: var(--color-text-primary);
   font-family: 'Inter', sans-serif;
   position: relative;
+  padding: 2.5em 3.5em 2em 3.5em;
 }
 
-/* Futuristic grid background */
-.slidev-layout::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--color-grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Red accent bar at top */
+/* Clean red accent bar at top */
 .slidev-layout::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
+  height: 3px;
   background: linear-gradient(90deg, var(--color-main), var(--color-main-strong));
   z-index: 10;
 }
 
-/* Content above grid */
-.slidev-layout > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Headings */
+/* Title container with left accent bar */
 .slidev-layout h1 {
   color: var(--color-main);
   font-weight: 700;
-  text-shadow: 0 0 30px var(--color-glow);
+  font-size: 1.85em;
   letter-spacing: -0.02em;
+  padding: 0.4em 0 0.4em 0.7em;
+  border-left: 4px solid var(--color-main);
+  background: linear-gradient(90deg, rgba(236, 0, 0, 0.04), transparent 60%);
+  margin-bottom: 0.3em;
 }
 
 .slidev-layout h2 {
   color: var(--color-main-strong);
   font-weight: 600;
+  font-size: 1.3em;
 }
 
 .slidev-layout h3 {
   color: var(--color-text-primary);
   font-weight: 600;
+  font-size: 1.1em;
 }
 
 /* Lists */
@@ -82,7 +68,7 @@
 
 /* Code blocks */
 .slidev-layout code {
-  background: rgba(236, 0, 0, 0.08);
+  background: rgba(236, 0, 0, 0.06);
   color: var(--color-main-strong);
   padding: 0.15em 0.4em;
   border-radius: 4px;
@@ -114,32 +100,40 @@
 
 .slidev-layout td {
   padding: 0.5em 1em;
-  border-bottom: 1px solid rgba(236, 0, 0, 0.15);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .slidev-layout tr:nth-child(even) {
-  background: rgba(236, 0, 0, 0.03);
+  background: rgba(236, 0, 0, 0.02);
 }
 
 /* Blockquotes */
 .slidev-layout blockquote {
-  border-left: 4px solid var(--color-main);
+  border-left: 3px solid var(--color-main);
   padding-left: 1em;
   color: var(--color-text-secondary);
   font-style: italic;
 }
 
-/* Strong/Bold emphasis */
+/* Strong/Bold emphasis - only on light backgrounds */
 .slidev-layout strong {
   color: var(--color-main-strong);
   font-weight: 700;
 }
 
+/* Reset strong color inside dark containers */
+[style*="background: #1a1a2e"] strong,
+[style*="background: #2D3748"] strong,
+[style*="background: #C00000"] strong,
+[style*="background: #EC0000"] strong {
+  color: #FFFFFF;
+}
+
 /* Links */
 .slidev-layout a {
   color: var(--color-main);
-  text-decoration: underline;
-  text-decoration-color: rgba(236, 0, 0, 0.3);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-border);
 }
 
 /* Slide number */
