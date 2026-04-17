@@ -1,0 +1,14 @@
+{
+  "name": "slidev-theme-ai-laboratory",
+  "version": "1.0.0",
+  "slidev": {
+    "colorSchema": "light",
+    "defaults": {
+      "fonts": {
+        "sans": "Inter",
+        "mono": "Fira Code"
+      },
+      "transition": "slide-left"
+    }
+  }
+}

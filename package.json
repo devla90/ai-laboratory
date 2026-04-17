@@ -1,0 +1,22 @@
+{
+  "name": "ai-laboratory",
+  "version": "1.0.0",
+  "description": "Laboratorio de Inteligencia Artificial - Presentaciones Slidev",
+  "private": true,
+  "scripts": {
+    "dev": "slidev presentations/lab-01/slides.md --open",
+    "dev:lab01": "slidev presentations/lab-01/slides.md --open",
+    "dev:lab02": "slidev presentations/lab-02/slides.md --open",
+    "dev:lab03": "slidev presentations/lab-03/slides.md --open",
+    "dev:lab04": "slidev presentations/lab-04/slides.md --open",
+    "build": "slidev build presentations/lab-01/slides.md",
+    "export": "slidev export presentations/lab-01/slides.md"
+  },
+  "dependencies": {
+    "@slidev/cli": "^51.0.0",
+    "@slidev/theme-default": "latest"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.40.0"
+  }
+}

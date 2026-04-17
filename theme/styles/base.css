@@ -1,0 +1,149 @@
+:root {
+  --color-main: #EC0000;
+  --color-main-strong: #C00000;
+  --color-light: #F7FAFC;
+  --color-dark: #CC0000;
+  --color-contrast-text: #FFFFFF;
+  --color-glow: rgba(236, 0, 0, 0.3);
+  --color-grid: rgba(236, 0, 0, 0.08);
+  --color-surface: rgba(255, 255, 255, 0.95);
+  --color-dark-bg: #1a1a2e;
+  --color-dark-surface: #16213e;
+  --color-text-primary: #2D3748;
+  --color-text-secondary: #718096;
+}
+
+/* Global base */
+.slidev-layout {
+  background-color: var(--color-light);
+  color: var(--color-text-primary);
+  font-family: 'Inter', sans-serif;
+  position: relative;
+}
+
+/* Futuristic grid background */
+.slidev-layout::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Red accent bar at top */
+.slidev-layout::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-main), var(--color-main-strong));
+  z-index: 10;
+}
+
+/* Content above grid */
+.slidev-layout > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Headings */
+.slidev-layout h1 {
+  color: var(--color-main);
+  font-weight: 700;
+  text-shadow: 0 0 30px var(--color-glow);
+  letter-spacing: -0.02em;
+}
+
+.slidev-layout h2 {
+  color: var(--color-main-strong);
+  font-weight: 600;
+}
+
+.slidev-layout h3 {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+/* Lists */
+.slidev-layout ul li::marker {
+  color: var(--color-main);
+}
+
+.slidev-layout ol li::marker {
+  color: var(--color-main);
+  font-weight: 700;
+}
+
+/* Code blocks */
+.slidev-layout code {
+  background: rgba(236, 0, 0, 0.08);
+  color: var(--color-main-strong);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9em;
+}
+
+.slidev-layout pre code {
+  background: var(--color-dark-bg);
+  color: var(--color-contrast-text);
+  padding: 1em;
+  border-radius: 8px;
+  display: block;
+}
+
+/* Tables */
+.slidev-layout table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.slidev-layout th {
+  background: var(--color-main);
+  color: var(--color-contrast-text);
+  padding: 0.5em 1em;
+  text-align: left;
+  font-weight: 600;
+}
+
+.slidev-layout td {
+  padding: 0.5em 1em;
+  border-bottom: 1px solid rgba(236, 0, 0, 0.15);
+}
+
+.slidev-layout tr:nth-child(even) {
+  background: rgba(236, 0, 0, 0.03);
+}
+
+/* Blockquotes */
+.slidev-layout blockquote {
+  border-left: 4px solid var(--color-main);
+  padding-left: 1em;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+/* Strong/Bold emphasis */
+.slidev-layout strong {
+  color: var(--color-main-strong);
+  font-weight: 700;
+}
+
+/* Links */
+.slidev-layout a {
+  color: var(--color-main);
+  text-decoration: underline;
+  text-decoration-color: rgba(236, 0, 0, 0.3);
+}
+
+/* Slide number */
+.slidev-page-number {
+  color: var(--color-main) !important;
+  font-weight: 600;
+}
