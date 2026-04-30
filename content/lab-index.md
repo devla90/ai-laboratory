@@ -1,5 +1,9 @@
 # AI Laboratory - Indice Maestro de Labs
 
+## Presentador
+- **Nombre**: Luis Rosales
+- **Rol**: Software Engineer AI
+
 ## Distribucion de Sesiones
 
 Cada sesion: 1 hora total (40 min presentacion + 20 min otros temas)
