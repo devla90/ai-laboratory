@@ -36,7 +36,25 @@ Genera el archivo `presentations/lab-$ARGUMENTS/slides.md` con:
 Usar `presentations/lab-01/slides.md` como referencia de estilo visual y estructura HTML.
 Crear directorio `presentations/lab-$ARGUMENTS/public/images/` si no existe.
 
-### Paso 5: Verificar
+### Paso 5: Generar guía del moderador y notas de timing
+1. Lee `skills/content/moderator-guide/SKILL.md` para las reglas de formato
+2. Carga el skill de conocimiento AI del lab (mismo del Paso 2)
+3. Genera `content/lab-$ARGUMENTS/guide.md` con:
+   - Información general (duración, audiencia, objetivo)
+   - Preparación previa (checklist)
+   - Cada sección con: puntos clave, guion sugerido, analogías detalladas, preguntas del público con respuestas, transiciones
+   - Sección de tiempo abierto (20 min) con opciones de dinámica
+   - Notas finales: ritmo, manejo de tiempo, errores comunes, distribución de tiempo, checklist post-sesión
+4. Genera `content/lab-$ARGUMENTS/notes.md` con:
+   - Tabla de timing por sección (slide, tiempo, acumulado)
+   - Transiciones clave entre secciones (frases exactas)
+   - Señales de alerta si se atrasa
+   - Señales de que va bien
+
+Usar `content/lab-01/guide.md` y `content/lab-01/notes.md` como referencia de formato y nivel de detalle.
+
+### Paso 6: Verificar
 - El número de slides debe coincidir con lab-index.md
 - Cada slide debe tener notas del presentador
 - Los layouts deben corresponder al tipo indicado en lab-index.md
+- La guía del moderador debe cubrir todas las secciones del lab
