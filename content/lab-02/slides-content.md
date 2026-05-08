@@ -44,7 +44,7 @@
 
 ## Slide 6 [comparison]
 - **Titulo**: Ventana de Contexto: Claude Code
-- **Datos**: ~200K tokens (~150,000 palabras, ~2 libros completos)
+- **Datos**: Hasta ~1M tokens con Opus 4.6/4.7 (~750,000 palabras, 5x mas que antes). Compactacion en cascada de 5 niveles
 - **Bullets**:
   - Ideal para proyectos grandes
   - Lee multiples archivos sin perder el hilo
@@ -54,23 +54,23 @@
 
 ## Slide 7 [comparison]
 - **Titulo**: Ventana de Contexto: Codex
-- **Datos**: ~128-200K tokens (varia por modelo)
+- **Datos**: ~200-400K tokens (GPT-5.3 Codex ~200K, GPT-5.5 ~400K). Ahora con compactacion server-side
 - **Bullets**:
-  - Ejecuta en sandbox aislado con repo completo clonado
-  - Enfoque en tareas autonomas y asincronas
-  - No es conversacional — ejecuta y entrega
-  - No necesita recordar historial de chat
-- **Nota presentador**: Codex trabaja diferente: cada tarea es independiente, no necesita memoria de conversacion.
+  - CLI local (terminal) + Cloud remoto (contenedores)
+  - CLI: interactivo, edita archivos con sandbox de OS
+  - Cloud: envia tarea, clona repo, entrega diff o PR
+  - Config: AGENTS.md (similar a CLAUDE.md)
+- **Nota presentador**: Codex tiene dos modos: CLI interactivo en tu terminal o tareas autonomas en la nube.
 
 ## Slide 8 [comparison]
 - **Titulo**: Ventana de Contexto: Copilot
-- **Datos**: ~8-64K tokens (varia por modo)
+- **Datos**: ~8-192K tokens (varia por modo)
 - **Bullets**:
-  - Inline: solo el archivo actual (~8K)
-  - Chat: archivos abiertos + historial (~32K)
-  - Workspace: indexa el proyecto (~64K)
-  - Contexto mas limitado = respuestas mas "locales"
-- **Nota presentador**: Copilot tiene multiples modos. Ideal para autocompletado rapido, no para tareas complejas.
+  - Inline: autocompletado en archivo actual (~8K)
+  - Chat: archivos abiertos + historial (~64-128K)
+  - Agent: edita archivos y ejecuta comandos (~192K)
+  - Cloud: crea PRs desde issues via GitHub Actions
+- **Nota presentador**: Copilot tiene 4 modos, es multi-modelo (Claude, GPT, Gemini) y GitHub limita el contexto nativo de cada modelo.
 
 ## Slide 9 [default]
 - **Titulo**: Que es la Compactacion
@@ -87,7 +87,7 @@
   - Tienes un cuaderno de 100 paginas, ya llenaste 90
   - En vez de empezar uno nuevo, resumes las primeras 70 en 10
   - Pierdes algo de detalle, pero mantienes las ideas clave
-  - Ahora tienes 30 paginas libres para seguir
+  - Ahora solo usas 30 paginas (10 resumen + 20 recientes) y tienes 70 libres para seguir
   - La IA puede "olvidar" instrucciones del inicio
   - Solucion: repetir instrucciones importantes o usar archivos de configuracion
 - **Nota presentador**: Conectar con la experiencia de todos: resumir apuntes antes de un examen.

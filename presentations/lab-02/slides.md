@@ -281,10 +281,10 @@ layout: comparison
 
 <v-click>
 <div class="p-5 rounded-xl" style="background: #1a1a2e; color: white">
-  <div class="text-3xl mb-2">~200K</div>
+  <div class="text-3xl mb-2">Hasta ~1M</div>
   <div class="text-sm opacity-80">tokens de contexto</div>
-  <div class="mt-3 text-xs opacity-60">≈ 150,000 palabras</div>
-  <div class="text-xs opacity-60">≈ 2 libros completos</div>
+  <div class="mt-3 text-xs opacity-60">≈ 750,000 palabras (5x más que antes)</div>
+  <div class="text-xs opacity-60">Con Opus 4.6/4.7 · Compactación en 5 niveles</div>
 </div>
 </v-click>
 
@@ -307,7 +307,7 @@ layout: comparison
   </div>
   <div class="flex items-start gap-2">
     <span style="color: #EC0000">✓</span>
-    <span class="text-sm">Compactación automática al acercarse al límite</span>
+    <span class="text-sm">Compactación automática en <strong>cascada de 5 niveles</strong></span>
   </div>
 </div>
 </v-click>
@@ -322,9 +322,9 @@ layout: comparison
 </div>
 
 <!--
-Claude Code tiene una de las ventanas de contexto más grandes: ~200K tokens.
-Eso es como 2 libros completos. Puede leer múltiples archivos de tu proyecto y mantener el contexto entre ellos.
-Además, cuando se acerca al límite, compacta automáticamente — ya veremos qué significa eso.
+Claude Code ahora soporta hasta ~1 millón de tokens con Opus 4.6/4.7, 5 veces más que antes.
+Eso son unas 750 mil palabras. Puede leer múltiples archivos de tu proyecto y mantener el contexto entre ellos.
+Además, tiene compactación automática en cascada de 5 niveles — ya veremos qué significa eso.
 Timing: 2.5 min
 Transición: "¿Y las otras herramientas?"
 -->
@@ -344,10 +344,10 @@ layout: comparison
 
 <v-click>
 <div class="p-5 rounded-xl" style="background: #1a1a2e; color: white">
-  <div class="text-3xl mb-2">~128-200K</div>
+  <div class="text-3xl mb-2">~200-400K</div>
   <div class="text-sm opacity-80">tokens de contexto</div>
-  <div class="mt-3 text-xs opacity-60">Varía según el modelo base</div>
-  <div class="text-xs opacity-60">utilizado en cada tarea</div>
+  <div class="mt-3 text-xs opacity-60">GPT-5.3 Codex ~200K · GPT-5.5 ~400K</div>
+  <div class="text-xs opacity-60">Ahora con compactación server-side</div>
 </div>
 </v-click>
 
@@ -358,26 +358,26 @@ layout: comparison
 <div class="space-y-3">
   <div class="flex items-start gap-2">
     <span style="color: #EC0000">✓</span>
-    <span class="text-sm">Ejecuta en <strong>sandbox aislado</strong></span>
+    <span class="text-sm"><strong>CLI local</strong> (terminal) + <strong>Cloud</strong> remoto (contenedores)</span>
   </div>
   <div class="flex items-start gap-2">
     <span style="color: #EC0000">✓</span>
-    <span class="text-sm">Trabaja con el <strong>repo completo</strong> clonado</span>
+    <span class="text-sm">CLI: interactivo, edita archivos con <strong>sandbox de OS</strong></span>
   </div>
   <div class="flex items-start gap-2">
     <span style="color: #EC0000">✓</span>
-    <span class="text-sm">Enfoque en tareas <strong>autónomas</strong> y asíncronas</span>
+    <span class="text-sm">Cloud: envía tarea, clona repo, <strong>entrega diff o PR</strong></span>
   </div>
   <div class="flex items-start gap-2">
     <span style="color: #EC0000">▸</span>
-    <span class="text-sm">No es conversacional — <strong>ejecuta y entrega</strong></span>
+    <span class="text-sm">Config: <strong>AGENTS.md</strong> (similar a CLAUDE.md)</span>
   </div>
 </div>
 </v-click>
 
 <v-click>
 <div class="mt-4 p-3 rounded-lg text-sm" style="background: rgba(236,0,0,0.05); border: 1px solid rgba(236,0,0,0.12)">
-  💡 Diferente enfoque: no necesita recordar historial de chat
+  💡 Dos modos: interactivo en tu terminal o tareas autónomas en la nube
 </div>
 </v-click>
 
@@ -385,9 +385,9 @@ layout: comparison
 </div>
 
 <!--
-Codex de OpenAI tiene un contexto similar pero su enfoque es distinto: trabaja de forma autónoma.
-Clona tu repo, ejecuta la tarea en un sandbox aislado, y te entrega el resultado.
-No necesita "recordar" un historial de conversación largo porque cada tarea es independiente.
+Codex de OpenAI tiene dos modos: CLI local y Cloud remoto.
+El CLI corre en tu terminal, es interactivo como un chat, y edita archivos directamente en tu máquina con sandbox a nivel de OS.
+El Cloud clona tu repo en un contenedor, ejecuta la tarea en background, y te entrega un diff o PR.
 Timing: 2.5 min
 Transición: "Y Copilot tiene un enfoque completamente diferente..."
 -->
@@ -407,10 +407,10 @@ layout: comparison
 
 <v-click>
 <div class="p-5 rounded-xl" style="background: #1a1a2e; color: white">
-  <div class="text-3xl mb-2">~8-64K</div>
+  <div class="text-3xl mb-2">~8-192K</div>
   <div class="text-sm opacity-80">tokens de contexto</div>
   <div class="mt-3 text-xs opacity-60">Varía por modo:</div>
-  <div class="text-xs opacity-60">inline · chat · workspace</div>
+  <div class="text-xs opacity-60">inline · chat · agent</div>
 </div>
 </v-click>
 
@@ -421,15 +421,19 @@ layout: comparison
 <div class="space-y-3">
   <div class="flex items-start gap-2">
     <span style="color: #EC0000">▸</span>
-    <span class="text-sm"><strong>Inline:</strong> solo el archivo actual (~8K)</span>
+    <span class="text-sm"><strong>Inline:</strong> autocompletado en archivo actual (~8K)</span>
   </div>
   <div class="flex items-start gap-2">
     <span style="color: #EC0000">▸</span>
-    <span class="text-sm"><strong>Chat:</strong> archivos abiertos + historial (~32K)</span>
+    <span class="text-sm"><strong>Chat:</strong> archivos abiertos + historial (~64-128K)</span>
   </div>
   <div class="flex items-start gap-2">
     <span style="color: #EC0000">▸</span>
-    <span class="text-sm"><strong>Workspace:</strong> indexa el proyecto (~64K)</span>
+    <span class="text-sm"><strong>Agent:</strong> edita archivos y ejecuta comandos (~192K)</span>
+  </div>
+  <div class="flex items-start gap-2">
+    <span style="color: #EC0000">▸</span>
+    <span class="text-sm"><strong>Cloud:</strong> crea PRs desde issues via GitHub Actions</span>
   </div>
 </div>
 </v-click>
@@ -442,7 +446,7 @@ layout: comparison
 
 <v-click>
 <div class="mt-2 p-3 rounded-lg text-sm" style="background: rgba(236,0,0,0.05); border: 1px solid rgba(236,0,0,0.12)">
-  💡 Ideal para autocompletado rápido, no para tareas complejas
+  💡 Multi-modelo: elige entre Claude, GPT, Gemini. GitHub limita el contexto nativo
 </div>
 </v-click>
 
@@ -450,10 +454,9 @@ layout: comparison
 </div>
 
 <!--
-Copilot funciona diferente: tiene múltiples modos con distintos tamaños de contexto.
-Inline es el autocompletado — solo ve tu archivo actual.
-Chat puede ver los archivos abiertos. Workspace indexa el proyecto.
-La ventaja: es muy rápido. La desventaja: no puede "ver" tanto como Claude Code.
+Copilot ahora tiene 4 modos: inline (~8K), chat (~64-128K), agent (~192K) y cloud agent (GitHub Actions).
+El agent mode edita archivos y ejecuta comandos autónomamente. El cloud agent crea PRs desde issues.
+Es multi-modelo: puedes elegir entre Claude, GPT, Gemini o Grok. GitHub limita el contexto nativo de cada modelo.
 Timing: 2 min
 Transición: "Ahora que sabemos que el contexto tiene un límite... ¿qué pasa cuando se llena?"
 -->
@@ -564,7 +567,7 @@ Transición: "Pensemos en una analogía para entenderlo mejor..."
 <v-click>
 <div class="flex items-start gap-2">
   <span style="color: #EC0000">▸</span>
-  <span>Ahora tienes <strong>30 páginas libres</strong> para seguir</span>
+  <span>Ahora tienes <strong>70 páginas libres</strong> para seguir</span>
 </div>
 </v-click>
 
@@ -581,7 +584,7 @@ Transición: "Pensemos en una analogía para entenderlo mejor..."
 Imaginen que tienen un cuaderno de 100 páginas y ya llenaron 90.
 En vez de empezar uno nuevo (perder todo), toman las primeras 70 páginas y las resumen en 10.
 Pierden algo de detalle, pero mantienen las ideas principales.
-Ahora tienen 30 páginas libres para seguir trabajando. La IA hace exactamente eso.
+Ahora solo usan 30 páginas (10 de resumen + 20 recientes) y tienen 70 páginas libres. La IA hace exactamente eso.
 Timing: 2.5 min
 Transición: "Hay algo que podemos hacer para ayudar a la IA: hablarle en su idioma..."
 -->

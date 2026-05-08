@@ -118,61 +118,67 @@ Si hay un pizarron fisico disponible:
 
 ## Seccion 4: Ventanas de Contexto (7 min, slides 6-8)
 
-### Slide 6: Claude Code - ~200K tokens (2.5 min)
+### Slide 6: Claude Code - Hasta ~1M tokens (2.5 min)
 
 #### Puntos Clave
-- Claude Code tiene una de las ventanas mas grandes: ~200K tokens
-- Equivalente a ~150,000 palabras o 2 libros completos
+- Claude Code ahora soporta hasta ~1M tokens con Opus 4.6/4.7 (5x mas que el anterior ~200K)
+- Equivalente a ~750,000 palabras
 - Ideal para proyectos grandes: puede leer multiples archivos sin perder el hilo
 - Mantiene decisiones y contexto del proyecto a lo largo de la conversacion
-- Tiene compactacion automatica cuando se acerca al limite
+- Tiene compactacion automatica en cascada de 5 niveles
 
 #### Guion Sugerido
-> "Empecemos con Claude Code, que es la herramienta con una de las ventanas de contexto mas grandes disponibles. Tiene aproximadamente 200 mil tokens, que son unas 150 mil palabras. Para que se hagan una idea: eso es como tener dos libros completos en la pizarra al mismo tiempo."
+> "Empecemos con Claude Code, que ahora tiene la ventana de contexto mas grande de las herramientas que usamos. Con Opus 4.6 y 4.7, soporta hasta 1 millon de tokens — eso son unas 750 mil palabras, 5 veces mas que antes. Es como tener varios libros completos en la pizarra al mismo tiempo."
 
-> "Que significa esto en la practica? Que pueden estar trabajando en un proyecto, pedirle que lea varios archivos, que entienda la arquitectura, y Claude Code puede mantener todo eso en su pizarra sin problemas. Puede recordar decisiones que tomaron hace 50 mensajes."
+> "Que significa esto en la practica? Que pueden estar trabajando en un proyecto grande, pedirle que lea muchos archivos, que entienda toda la arquitectura, y Claude Code puede mantener todo eso en su pizarra sin problemas."
 
-> "Ademas, tiene un mecanismo de compactacion automatica que vamos a ver en un momento. Cuando se acerca al limite, resume lo antiguo para seguir trabajando."
+> "Ademas, ahora tiene compactacion en cascada de 5 niveles. No solo resume una vez — va comprimiendo progresivamente a medida que necesita mas espacio. Vamos a ver que significa eso en un momento."
 
-### Slide 7: Codex - ~128-200K tokens (2.5 min)
+### Slide 7: Codex - ~200-400K tokens (2.5 min)
 
 #### Puntos Clave
-- Codex de OpenAI tiene un rango de ~128K a 200K tokens dependiendo del modelo
-- Trabaja de forma diferente: ejecuta en un sandbox aislado con el repo completo clonado
-- No es conversacional: recibe una tarea, la ejecuta, y entrega el resultado
-- No necesita "recordar" un historial de chat porque cada tarea es independiente
-- Enfoque autonomo y asincrono
+- Codex de OpenAI ahora tiene entre ~200K y 400K tokens (GPT-5.3 Codex ~200K, GPT-5.5 ~400K)
+- Tiene dos modos: CLI local (terminal, interactivo) y Cloud remoto (contenedores, asincrono)
+- CLI: ejecuta en tu maquina con sandbox a nivel de OS (Seatbelt en macOS, Bubblewrap en Linux)
+- Cloud: clona tu repo en un contenedor aislado, ejecuta la tarea, entrega diff o PR
+- Se configura con AGENTS.md (similar a CLAUDE.md en Claude Code)
 
 #### Guion Sugerido
-> "Codex de OpenAI funciona de una manera muy diferente. Tiene una ventana de contexto similar en tamano, pero la usa distinto. Codex no es conversacional. No es un chat. Le das una tarea, el la ejecuta en un entorno aislado con acceso a todo tu repositorio, y te entrega el resultado."
+> "Codex de OpenAI tambien crecio: ahora tiene entre 200 mil y 400 mil tokens. Pero lo mas interesante es que tiene dos modos de trabajo muy diferentes."
 
-> "Es como contratar a alguien para un trabajo puntual: le das las instrucciones, le das acceso al proyecto, y el trabaja. No necesita recordar conversaciones anteriores porque cada tarea empieza de cero."
+> "Primero, el CLI local: lo instalan en su terminal y funciona parecido a Claude Code. Es interactivo, pueden chatear con el, y edita archivos directamente en su maquina. Usa sandbox a nivel del sistema operativo para proteger su filesystem y red."
 
-> "Esto tiene ventajas y desventajas. La ventaja es que no se 'confunde' con mensajes viejos. La desventaja es que no aprende de la conversacion, cada tarea es independiente."
+> "Segundo, el Cloud: desde la web le envian una tarea, Codex clona su repo en un contenedor aislado en la nube, ejecuta todo en background, y les entrega un diff o un PR listo. Pueden mandar varias tareas en paralelo y volver despues a revisar los resultados."
+
+> "Se configura con AGENTS.md, que es el equivalente a CLAUDE.md en Claude Code. Ahi ponen instrucciones, convenciones del proyecto, y reglas."
 
 #### Posibles Preguntas del Publico
-- **"Entonces Codex es mejor para tareas grandes?"** -> "Es diferente. Codex es excelente para tareas autonomas y bien definidas: 'refactoriza este modulo', 'agrega tests a estas funciones'. Claude Code es mejor para trabajo interactivo donde van descubriendo la solucion juntos."
+- **"Entonces Codex es mejor para tareas grandes?"** -> "Depende. El CLI de Codex es interactivo como Claude Code. Pero el Cloud es ideal para tareas autonomas bien definidas: 'refactoriza este modulo', 'agrega tests a estas funciones'. Pueden mandar varias tareas en paralelo y volver despues."
 
-### Slide 8: Copilot - ~8-64K tokens (2 min)
+### Slide 8: Copilot - ~8-192K tokens (2 min)
 
 #### Puntos Clave
-- Copilot tiene la ventana mas variable: de 8K a 64K tokens segun el modo
-- Modo inline (autocompletado): solo ve el archivo actual (~8K)
-- Modo chat: ve archivos abiertos + historial (~32K)
-- Modo workspace: indexa el proyecto completo (~64K)
-- Contexto mas limitado implica respuestas mas "locales" y especificas
+- Copilot crecio mucho: de 8K a 192K tokens segun el modo, y ahora tiene 4 modos
+- Modo inline (autocompletado): solo el archivo actual (~8K)
+- Modo chat: archivos abiertos + historial (~64-128K)
+- Modo agent: edita archivos y ejecuta comandos autonomamente (~192K)
+- Cloud agent: crea PRs desde issues via GitHub Actions — trabaja en background
+- Es multi-modelo: el usuario elige entre Claude, GPT, Gemini o Grok
+- GitHub limita el contexto por debajo de lo que los modelos soportan nativamente
 
 #### Guion Sugerido
-> "Y luego tenemos a Copilot, que es el que probablemente mas han visto o usado. Copilot tiene algo interesante: su ventana de contexto cambia dependiendo del modo que usen."
+> "Y luego tenemos a Copilot, que cambio mucho. Ahora tiene 4 modos de trabajo y es multi-modelo: pueden elegir entre Claude, GPT, Gemini o Grok."
 
-> "Cuando estan escribiendo codigo y les aparece la sugerencia gris de autocompletado, ese es el modo inline. Ahi Copilot solo ve el archivo en el que estan, unos 8 mil tokens. Es una pizarra chiquita."
+> "El modo inline sigue igual: la sugerencia gris de autocompletado solo ve el archivo actual, unos 8 mil tokens."
 
-> "Si abren el chat de Copilot, sube a unos 32 mil tokens: puede ver los archivos abiertos y el historial del chat. Y si usan el modo workspace, sube a unos 64 mil tokens e indexa todo el proyecto."
+> "El chat ahora llega a 64-128 mil tokens. El agent mode llega hasta 192 mil tokens y es autonomo: edita multiples archivos y ejecuta comandos por ustedes, como correr tests o instalar dependencias."
 
-> "Esto explica por que a veces Copilot les sugiere algo que no tiene sentido en el contexto del proyecto. En modo inline, literalmente no puede ver los otros archivos. Trabaja con lo que tiene."
+> "Y lo mas nuevo: el cloud agent. Pueden asignar un issue de GitHub a Copilot y el crea una rama, abre un draft PR, y trabaja autonomamente en GitHub Actions. Vuelven despues y ya tienen el PR listo para revisar."
+
+> "Un detalle importante: GitHub limita el contexto por debajo de lo que los modelos soportan. Aunque Claude Opus maneja 1 millon de tokens, Copilot le pone un tope de unos 144 mil."
 
 #### Posibles Preguntas del Publico
-- **"Entonces cual es mejor?"** -> "No hay un 'mejor' universal. Depende de lo que necesiten. Copilot es increible para autocompletado rapido y cosas puntuales. Claude Code para trabajo profundo en el proyecto. Codex para tareas autonomas. Vamos a explorar esto con mas detalle en el Lab 4."
+- **"Entonces cual es mejor?"** -> "No hay un 'mejor' universal. Copilot es el mas versatil: autocompletado rapido, agent mode para tareas complejas, y cloud agent para trabajo autonomo. Claude Code tiene la ventana mas grande y la mejor ejecucion local. Codex combina CLI interactivo y cloud para tareas en paralelo. Vamos a explorar esto con mas detalle en el Lab 4."
 - **"Se pueden combinar?"** -> "Absolutamente. Muchos devs usan Copilot para el dia a dia y Claude Code o Codex para tareas mas complejas. No son excluyentes."
 
 ### Transicion
@@ -208,14 +214,14 @@ Si hay un pizarron fisico disponible:
 - Cuaderno de 100 paginas, ya llenaste 90
 - En vez de empezar uno nuevo, resumes las primeras 70 en 10 paginas
 - Pierdes detalle pero mantienes las ideas clave
-- Ahora tienes 30 paginas libres para seguir
+- Ahora solo usas 30 paginas (10 resumen + 20 recientes) y tienes 70 libres para seguir
 - La IA puede "olvidar" instrucciones del inicio por esto
 - Solucion: repetir instrucciones importantes o usar archivos de configuracion
 
 #### Guion Sugerido
 > "Piensen en un cuaderno de 100 paginas. Estan en una sesion de trabajo larga, tomando apuntes, y ya llenaron 90 paginas. Les quedan 10. Que hacen?"
 
-> "Una opcion es tomar las primeras 70 paginas de apuntes y resumirlas en 10 paginas. Pierden los detalles, las notas al margen, los dibujos que hicieron, pero mantienen las ideas principales. Ahora tienen 30 paginas libres para seguir trabajando."
+> "Una opcion es tomar las primeras 70 paginas de apuntes y resumirlas en 10 paginas. Pierden los detalles, las notas al margen, los dibujos que hicieron, pero mantienen las ideas principales. Ahora solo usan 30 paginas — 10 del resumen mas 20 recientes — y les quedan 70 paginas libres para seguir trabajando."
 
 > "Eso es exactamente lo que hace la compactacion. La IA resume la primera parte de la conversacion para liberar espacio y poder seguir."
 
@@ -344,7 +350,7 @@ Dejar que el grupo comente por 1-2 minutos. Puntos a destacar si no los menciona
 
 ### Puntos Clave del Resumen
 1. El contexto es la "pizarra" de la IA -- tiene un limite fijo
-2. Cada herramienta tiene una ventana de contexto diferente (8K a 200K tokens)
+2. Cada herramienta tiene una ventana de contexto diferente (8K a 1M tokens)
 3. La compactacion resume lo viejo para seguir trabajando
 4. Markdown ayuda a la IA a entender mejor tu solicitud
 
@@ -353,7 +359,7 @@ Dejar que el grupo comente por 1-2 minutos. Puntos a destacar si no los menciona
 
 > "Primera: el contexto es la pizarra de la IA, y tiene un limite. Todo lo que le dicen se escribe en esa pizarra, y cuando se llena, se borra lo mas antiguo."
 
-> "Segunda: cada herramienta tiene un tamano de pizarra diferente. Claude Code tiene una pizarra grande, Copilot tiene una mas chica. Saber esto les ayuda a elegir la herramienta correcta para cada tarea."
+> "Segunda: cada herramienta tiene un tamano de pizarra diferente. Claude Code tiene la pizarra mas grande — hasta un millon de tokens. Copilot crecio mucho con su agent mode, pero sigue por debajo. Saber esto les ayuda a elegir la herramienta correcta para cada tarea."
 
 > "Tercera: la compactacion es el mecanismo que tiene la IA para sobrevivir cuando la pizarra se llena. Resume lo viejo para poder seguir. Es util, pero puede hacer que la IA olvide instrucciones del inicio."
 
@@ -403,7 +409,7 @@ Los 20 minutos restantes son flexibles. Algunas opciones:
 > "Si, bastante. Una palabra en ingles suele ser 1 token, pero en espanol puede ser 1.5 o 2 tokens. Esto significa que el mismo mensaje en espanol consume mas contexto que en ingles. Para prompts largos o instrucciones de sistema, escribir en ingles te da mas espacio."
 
 **"Copilot inline solo ve el archivo actual, entonces como sabe del resto del proyecto?"**
-> "No lo sabe, y por eso a veces sugiere cosas que no encajan. Para sugerencias que necesitan contexto del proyecto, el modo workspace o el chat de Copilot son mejores opciones. El inline es perfecto para completar la linea actual o una funcion corta."
+> "No lo sabe, y por eso a veces sugiere cosas que no encajan. Para sugerencias que necesitan contexto del proyecto, el agent mode o el chat de Copilot son mejores opciones. El inline es perfecto para completar la linea actual o una funcion corta."
 
 **"Entonces markdown es como 'hablar el idioma' de la IA?"**
 > "Exacto, es una muy buena forma de verlo. Es como cuando viajas a otro pais: puedes comunicarte con senales, pero si hablas algo del idioma local, la comunicacion es mucho mejor. Markdown es el 'idioma local' de la IA."
